@@ -4,7 +4,7 @@ Un petit jeu Snake jouable dans un navigateur, réalisé avec HTML, CSS et JavaS
 
 ## Étapes de création
 
-1. Créer `index.html` pour la page du jeu, `style.css` pour son apparence et `script.js` pour sa logique.
+1. Créer `index.html` pour la page du jeu et `style.css` pour son apparence. La logique est séparée entre `game.js` (règles du jeu), `input.js` (commandes clavier) et `script.js` (démarrage du jeu).
 2. Afficher une grille qui servira de terrain de jeu.
 3. Dessiner le serpent et faire avancer sa tête automatiquement.
 4. Ajouter les commandes au clavier pour changer la direction du serpent.
@@ -13,6 +13,10 @@ Un petit jeu Snake jouable dans un navigateur, réalisé avec HTML, CSS et JavaS
 7. Détecter les collisions avec les murs et le corps du serpent, puis terminer la partie.
 8. Afficher le score et proposer de recommencer une partie.
 9. Tester le jeu et corriger les problèmes avant de l'améliorer.
+
+## Brancher les fichiers
+
+Dans `index.html`, prévoir un canvas d'au moins 80 pixels de large, par exemple `<canvas id="game" width="400" height="400"></canvas>`, ainsi qu'un élément `id="score"` pour le score. Les éléments `id="message"`, `id="start-button"` et `id="restart-button"` sont facultatifs. Charger le point d'entrée après le contenu HTML avec `<script type="module" src="script.js"></script>` ; il importe automatiquement `game.js` et `input.js`.
 
 ## Sauvegarder le projet sur GitHub
 
