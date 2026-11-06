@@ -1,60 +1,35 @@
 # Snake
 
-Un petit jeu Snake jouable dans un navigateur, réalisé avec HTML, CSS et JavaScript.
+Un jeu Snake simple qui se joue dans un navigateur. Le joueur dirige un serpent sur une grille, lui fait manger des pommes pour augmenter son score et essaie d'éviter les murs ainsi que son propre corps.
 
-## Étapes de création
+## Comment jouer
 
-1. Créer `index.html` pour la page du jeu et `style.css` pour son apparence. La logique est séparée entre `game.js` (règles du jeu), `input.js` (commandes clavier) et `script.js` (démarrage du jeu).
-2. Afficher une grille qui servira de terrain de jeu.
-3. Dessiner le serpent et faire avancer sa tête automatiquement.
-4. Ajouter les commandes au clavier pour changer la direction du serpent.
-5. Placer une pomme au hasard sur la grille et augmenter le score quand le serpent la mange.
-6. Faire grandir le serpent après chaque pomme.
-7. Détecter les collisions avec les murs et le corps du serpent, puis terminer la partie.
-8. Afficher le score et proposer de recommencer une partie.
-9. Tester le jeu et corriger les problèmes avant de l'améliorer.
+- Utilise les flèches du clavier ou les touches **ZQSD** pour diriger le serpent.
+- Appuie sur **Espace** pour démarrer la partie.
+- Mange les pommes pour faire grandir le serpent et gagner des points.
+- Évite les bords de la grille et le corps du serpent.
 
-## Brancher les fichiers
+## Le projet
 
-Dans `index.html`, prévoir un canvas d'au moins 80 pixels de large, par exemple `<canvas id="game" width="400" height="400"></canvas>`, ainsi qu'un élément `id="score"` pour le score. Les éléments `id="message"`, `id="start-button"` et `id="restart-button"` sont facultatifs. Charger le point d'entrée après le contenu HTML avec `<script type="module" src="script.js"></script>` ; il importe automatiquement `game.js` et `input.js`.
+Le jeu est écrit en JavaScript sans dépendance externe. Le code est réparti en trois fichiers :
 
-## Sauvegarder le projet sur GitHub
+- [`game.js`](./game.js) contient les règles de la partie : déplacement, collisions, score, dessin et redémarrage.
+- [`input.js`](./input.js) relie les touches du clavier aux actions du jeu.
+- [`script.js`](./script.js) initialise le jeu et connecte son moteur aux éléments de la page.
 
-### Première publication
+La grille et le serpent sont dessinés dans un élément HTML `<canvas>`. Le moteur met à jour la partie à intervalles réguliers, puis redessine le canvas. La nourriture est placée au hasard sur une case libre.
 
-1. Créer un dépôt vide sur GitHub. Comme ce projet possède déjà un README, ne pas demander à GitHub d'en créer un autre.
-2. Ouvrir un terminal dans le dossier du projet.
-3. Si le dossier n'est pas encore un dépôt Git, l'initialiser :
+## Intégration dans une page web
 
-	```bash
-	git init
-	```
+Le projet doit être chargé depuis une page HTML qui contient un canvas avec l'identifiant `game`. Les éléments `score`, `message`, `start-button` et `restart-button` sont facultatifs : ils permettent respectivement d'afficher le score, un message et les boutons de démarrage et de redémarrage.
 
-4. Ajouter les fichiers et créer le premier point de sauvegarde :
-
-	```bash
-	git add .
-	git commit -m "Premiere version du jeu Snake"
-	```
-
-5. Relier le dossier au dépôt GitHub. Remplacer l'adresse d'exemple par l'adresse HTTPS affichée sur GitHub :
-
-	```bash
-	git branch -M main
-	git remote add origin https://github.com/TON-NOM/TON-DEPOT.git
-	git push -u origin main
-	```
-
-Si `git remote add origin` indique que `origin` existe déjà, ne pas répéter cette commande. Vérifier l'adresse avec `git remote -v`, puis envoyer les changements avec `git push -u origin main`.
-
-### Sauvegardes suivantes
-
-Après avoir apporté des changements, les enregistrer et les envoyer sur GitHub :
-
-```bash
-git add .
-git commit -m "Ajoute le deplacement du serpent"
-git push
+```html
+<canvas id="game" width="400" height="400"></canvas>
+<p>Score : <span id="score">0</span></p>
+<p id="message"></p>
+<button id="start-button">Commencer</button>
+<button id="restart-button">Recommencer</button>
+<script type="module" src="script.js"></script>
 ```
 
-GitHub peut demander de se connecter. Dans VS Code, suivre la fenêtre de connexion proposée. Pour vérifier les fichiers qui ont changé avant de les sauvegarder, utiliser `git status`.
+Le canvas doit faire au moins 80 pixels de large pour afficher le serpent de départ. Si la page ne contient pas de bouton de démarrage, la partie commence automatiquement.
