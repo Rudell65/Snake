@@ -10,7 +10,14 @@
 	<h1>Snake</h1>
 	<!-- Affichage du score : le <span id="score"> sera mis à jour en javascript chaque fois que le serpent mange -->
 	<p>Score : <span id="score">0</span></p>
-	<!-- Zone de jeu : 20 x 20 cases de 20 pixels. Le serpent et la nourriture y sont dessinés par render.js -->
-	<canvas id="jeu" width="400" height="400"></canvas>
+	<!-- Zone de jeu : 20 x 20 cases de 20 pixels. Le serpent et la nourriture y sont dessinés par game.js -->
+	<canvas id="game" width="400" height="400"></canvas>
+	<!-- Message affiché pendant la partie (Game Over, etc.) -->
+	<p id="message"></p>
+	<!-- Boutons de contrôle de la partie -->
+	<button id="start-button">Commencer</button>
+	<button id="restart-button">Recommencer</button>
+	<!-- Point d'entrée du jeu : script.js charge le moteur de Dominique -->
+	<script type="module" src="script.js"></script>
 </body>
 </html>
