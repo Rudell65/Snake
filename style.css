@@ -1,0 +1,14 @@
+/* Toute la page : on empile les éléments en colonne et on les centre */
+body {
+    display: flex;            /* active la mise en page flexbox */
+    flex-direction: column;   /* les éléments s'empilent de haut en bas */
+    align-items: center;      /* centre chaque élément horizontalement */
+    margin: 0;                /* enlève la marge par défaut du navigateur */
+    min-height: 100vh;        /* la page fait au moins toute la hauteur de l'écran */
+    font-family: Arial, sans-serif;
+}
+
+/* Le plateau de jeu : une bordure pour bien voir ses limites */
+#game {
+    border: 2px solid black;
+}
