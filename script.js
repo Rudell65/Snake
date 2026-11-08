@@ -1,6 +1,7 @@
 import { createGame } from "./game.js";
 import { attachInput } from "./input.js";
 
+// Récupère les éléments HTML et relie l'interface au moteur du jeu.
 function initializeGame() {
   const canvas = document.querySelector("#game");
   const scoreElement = document.querySelector("#score");
@@ -11,6 +12,7 @@ function initializeGame() {
     return;
   }
 
+  // Le moteur contient les règles et l'état du jeu ; les entrées clavier lui sont ensuite reliées.
   const game = createGame({ canvas, scoreElement, messageElement });
   if (!game) {
     return;
@@ -18,6 +20,7 @@ function initializeGame() {
 
   attachInput(game);
 
+  // Relie les boutons HTML aux actions de démarrage et de redémarrage.
   const startButton = document.querySelector("#start-button");
   const restartButton = document.querySelector("#restart-button");
 
@@ -33,6 +36,7 @@ function initializeGame() {
   }
 }
 
+// Attend que le HTML soit chargé avant de chercher ses éléments.
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initializeGame, { once: true });
 } else {
