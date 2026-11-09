@@ -1,35 +1,66 @@
 # Snake
 
-Un jeu Snake simple qui se joue dans un navigateur. Le joueur dirige un serpent sur une grille, lui fait manger des pommes pour augmenter son score et essaie d'éviter les murs ainsi que son propre corps.
+Un jeu Snake simple qui se joue dans le navigateur. Le joueur dirige un serpent sur une grille de 20 × 20 cases et lui fait manger des pommes pour grandir et gagner des points. Il doit éviter les murs et son propre corps.
+
+Projet de groupe réalisé en BTS SIO SLAM (Aurlom), en novembre 2026.
+
+![Capture d'écran du jeu](capture.png)
+
+## Lancer le jeu
+
+Le jeu utilise des modules JavaScript, qui ne fonctionnent pas si on ouvre `index.html` directement depuis l'ordinateur. Il faut passer par un petit serveur local :
+
+```bash
+git clone https://github.com/Rudell65/Snake.git
+cd Snake
+python3 -m http.server
+```
+
+Ensuite, ouvrir http://localhost:8000 dans le navigateur.
 
 ## Comment jouer
 
-- Utilise les flèches du clavier ou les touches **ZQSD** pour diriger le serpent.
-- Appuie sur **Espace** pour démarrer la partie.
-- Mange les pommes pour faire grandir le serpent et gagner des points.
-- Évite les bords de la grille et le corps du serpent.
+- Cliquer sur **Commencer**, ou appuyer sur **Espace**, pour démarrer la partie.
+- Diriger le serpent avec les **flèches** du clavier ou les touches **ZQSD**.
+- Chaque pomme mangée fait grandir le serpent et rapporte 1 point.
+- La partie s'arrête si le serpent touche un mur ou son propre corps.
+- Cliquer sur **Recommencer** pour rejouer.
 
-## Le projet
+## Technologies
 
-Le jeu est écrit en JavaScript sans dépendance externe. Le code est réparti en trois fichiers :
+- **HTML** : structure de la page
+- **CSS** : mise en page et apparence
+- **JavaScript** (sans bibliothèque externe) : moteur du jeu, dessin sur un `<canvas>`, gestion du clavier
+- **Git et GitHub** : travail en équipe avec branches et Pull Requests
 
-- [`game.js`](./game.js) contient les règles de la partie : déplacement, collisions, score, dessin et redémarrage.
-- [`input.js`](./input.js) relie les touches du clavier aux actions du jeu.
-- [`script.js`](./script.js) initialise le jeu et connecte son moteur aux éléments de la page.
+## Organisation des fichiers
 
-La grille et le serpent sont dessinés dans un élément HTML `<canvas>`. Le moteur met à jour la partie à intervalles réguliers, puis redessine le canvas. La nourriture est placée au hasard sur une case libre.
+| Fichier | Rôle |
+|---|---|
+| `index.html` | Structure de la page : titre, score, zone de jeu (`canvas`), message, boutons |
+| `style.css` | Apparence : page centrée, thème vert, titre, message et boutons stylés |
+| `game.js` | Moteur du jeu : déplacement, collisions, score, pomme, dessin, redémarrage |
+| `input.js` | Contrôles au clavier : flèches, ZQSD et Espace |
+| `script.js` | Point d'entrée : relie la page HTML au moteur du jeu |
 
-## Intégration dans une page web
+La page et le moteur communiquent grâce aux identifiants HTML : `game` (le canvas, obligatoire), `score`, `message`, `start-button` et `restart-button`.
 
-Le projet doit être chargé depuis une page HTML qui contient un canvas avec l'identifiant `game`. Les éléments `score`, `message`, `start-button` et `restart-button` sont facultatifs : ils permettent respectivement d'afficher le score, un message et les boutons de démarrage et de redémarrage.
+## Équipe et rôles
 
-```html
-<canvas id="game" width="400" height="400"></canvas>
-<p>Score : <span id="score">0</span></p>
-<p id="message"></p>
-<button id="start-button">Commencer</button>
-<button id="restart-button">Recommencer</button>
-<script type="module" src="script.js"></script>
-```
+**Aboubacar** ([danteaboubacar4-byte](https://github.com/danteaboubacar4-byte)) : la page et le visuel
+- `index.html` : structure de la page et lien avec le moteur du jeu
+- `style.css` : mise en page centrée avec flexbox, thème de couleurs assorti au plateau, boutons avec effet au survol
 
-Le canvas doit faire au moins 80 pixels de large pour afficher le serpent de départ. Si la page ne contient pas de bouton de démarrage, la partie commence automatiquement.
+**Dominique** ([Rudell65](https://github.com/Rudell65)) : le moteur du jeu
+- `game.js` : règles du jeu, déplacement du serpent, collisions, score, dessin, redémarrage
+- `input.js` : contrôles au clavier
+- `script.js` : initialisation du jeu
+- Création du dépôt et première version du README
+
+Tout le code est commenté.
+
+## Méthode de travail
+
+- Une branche par tâche (par exemple `aboubacar/style`, `dominique/commentaire`).
+- Chaque modification passe par une **Pull Request** relue par l'autre avant d'être fusionnée dans `main`.
+- Communication sur Discord : on annonce une tâche avant de la commencer et on prévient après chaque push.
